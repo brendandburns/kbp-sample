@@ -1,0 +1,32 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    run: frontend
+  name: frontend
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      run: frontend
+  template:
+    metadata:
+      labels:
+        run: frontend
+    spec:
+      containers:
+      - image: brendanburns/journal-server:latest
+        imagePullPolicy: Always
+        name: frontend
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        resources:
+          request:
+            cpu: "1.0"
+            memory: "1G"
+          limits:
+            cpu: "1.0"
+            memory: "1G"
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always

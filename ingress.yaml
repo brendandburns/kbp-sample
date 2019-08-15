@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: frontend-ingress
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /api
+        backend:
+          serviceName: frontend
+          servicePort: 8080
+      # NOTE: this should come after /api or else it will hijack requests
+      - path: /
+        backend:
+          serviceName: nginx
+          servicePort: 80
