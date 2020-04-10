@@ -22,7 +22,7 @@ spec:
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
         resources:
-          request:
+          requests:
             cpu: "1.0"
             memory: "1G"
           limits:
