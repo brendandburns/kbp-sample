@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
@@ -22,7 +22,7 @@ spec:
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
         resources:
-          request:
+          requests:
             cpu: "1.0"
             memory: "1G"
           limits:
