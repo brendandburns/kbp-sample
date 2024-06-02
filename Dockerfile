@@ -1,7 +1,9 @@
 FROM node:20-alpine
 
-COPY server.js /server.js
+WORKDIR /app
 
-RUN npm install -g redis
+COPY server.js /app
 
-CMD node /server.js
+RUN npm install redis
+
+CMD node /app/server.js
